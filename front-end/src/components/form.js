@@ -5,6 +5,7 @@ export default class Form extends Component {
     return (
       <form>
         <input type="text" />
+        <button>Submit</button>
       </form>
     );
   }
