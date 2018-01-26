@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import axios from 'axios'
 
 import Form from './components/form';
+
+const apiDetails = require('./config.json')
 
 class App extends Component {
   constructor(props) {
@@ -12,8 +13,19 @@ class App extends Component {
     };
   }
 
+  handlePostRequest = (movieName) => {
+    console.log('MOVIE --->', movieName)
+    axios.get(apiDetails.baseUrl + apiDetails.apiKey + '&query=' + movieName)
+      .then( (response) => {
+        console.log(response)
+      })
+      .catch( (err) => {
+        console.log(err)
+      })
+  }
+
   render() {
-    return <Form />;
+    return <Form searchMovies={this.handlePostRequest}/>;
   }
 }
 
