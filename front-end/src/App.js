@@ -8,12 +8,14 @@ const apiDetails = require('./config.json')
 class App extends Component {
   constructor(props) {
     super(props);
+    this.handlePostRequest = this.handlePostRequest.bind(this)
+
     this.state = {
       movies: []
     };
   }
 
-  handlePostRequest = (movieName) => {
+  handlePostRequest (movieName) {
     console.log('MOVIE --->', movieName)
     axios.get(apiDetails.baseUrl + apiDetails.apiKey + '&query=' + movieName)
       .then( (response) => {

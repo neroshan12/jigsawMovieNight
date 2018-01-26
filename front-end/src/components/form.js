@@ -3,18 +3,21 @@ import React, { Component } from 'react';
 export default class Form extends Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+
     this.state = {
       movieName: ''
     }
   }
 
-  handleChange = ({ target }) => {
+  handleChange ({ target }) {
     this.setState({
       [target.id]: target.value
     })
   }
 
-  handleClick = (evt) => {
+  handleClick (evt) {
     evt.preventDefault()
     this.props.searchMovies(this.state.movieName)
   }
